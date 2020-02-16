@@ -1,1 +1,4 @@
 node_modules
+dist/
+.ds_store
+yarn-error.log
