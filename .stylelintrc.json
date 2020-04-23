@@ -1,0 +1,29 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-prettier/recommended"
+  ],
+  "plugins": [
+    "stylelint-scss",
+    "stylelint-order"
+  ],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "order/properties-alphabetical-order": true,
+    "indentation": 2,
+    "string-quotes": "single",
+    "color-hex-length": "short",
+    "color-named": "never",
+    "selector-no-qualifying-type": true,
+    "declaration-block-trailing-semicolon": "always",
+    "declaration-no-important": true,
+    "property-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true,
+    "number-leading-zero": "always",
+    "comment-whitespace-inside": "always",
+    "at-rule-no-vendor-prefix": true,
+    "selector-pseudo-element-colon-notation": "double",
+    "selector-no-vendor-prefix": true,
+    "media-feature-name-no-vendor-prefix": true
+  }
+}
