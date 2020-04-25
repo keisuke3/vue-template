@@ -14,10 +14,8 @@
     "string-quotes": "single",
     "color-hex-length": "short",
     "color-named": "never",
-    "selector-no-qualifying-type": true,
     "declaration-block-trailing-semicolon": "always",
     "declaration-no-important": true,
-    "property-no-vendor-prefix": true,
     "value-no-vendor-prefix": true,
     "number-leading-zero": "always",
     "comment-whitespace-inside": "always",
@@ -25,5 +23,8 @@
     "selector-pseudo-element-colon-notation": "double",
     "selector-no-vendor-prefix": true,
     "media-feature-name-no-vendor-prefix": true
-  }
+  },
+  "ignoreFiles": [
+    "./client/src/css/_reset.scss"
+  ]
 }

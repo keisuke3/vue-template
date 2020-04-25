@@ -1,3 +1,4 @@
+import '../css/index.scss';
 import Vue from 'vue';
 import App from '../vue/containers/App.vue';
 

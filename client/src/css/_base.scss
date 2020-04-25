@@ -1,0 +1,79 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: $color-white;
+  box-sizing: border-box;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+body {
+  background-color: $color-white;
+  color: $color-black;
+  font-family: 'Noto', Arial, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, Osaka,
+    'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  font-size: 14px;
+  font-weight: var(--normal);
+  line-height: 1.5;
+}
+
+a {
+  color: $color-black;
+  display: inline-block;
+  outline: none;
+  text-decoration: none;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid $color-horizontal;
+  display: block;
+  height: 1px;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+input,
+select,
+button {
+  cursor: pointer;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'] {
+  cursor: auto;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
