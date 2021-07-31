@@ -3,7 +3,7 @@ const path = require('path');
 const src = path.resolve(__dirname, './client/src');
 const outputPath = path.resolve(__dirname, './dist');
 const TerserPlugin = require('terser-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = (env, argv) => {
@@ -15,14 +15,18 @@ module.exports = (env, argv) => {
       new VueLoaderPlugin(),
       new StyleLintPlugin({
         files: ['**/*.{vue,css,scss}'],
-      })
+      }),
+      new webpack.DefinePlugin({
+        "__VUE_OPTIONS_API__": false,
+        "__VUE_PROD_DEVTOOLS__": false,
+      }),
     ],
     resolve: {
-      extensions: ['.vue', '.js', '.css'],
+      extensions: ['.vue', '.js', 'ts', '.css'],
     },
     entry: {
       app: [
-        `${src}/js/index.js`
+        `${src}/ts/index.ts`
       ]
     },
     output: {
@@ -54,10 +58,18 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
-          test: /\.(vue|js)$/,
+          test: /\.(vue|js|ts)$/,
           enforce: 'pre',
           exclude: /node_modules/,
           loader: 'eslint-loader',
+        },
+        {
+          test: /\.ts$/,
+          exclude: /node_modules/,
+          loader: 'ts-loader',
+          options: {
+            appendTsSuffixTo: [/\.vue$/]
+          }
         },
         {
           test: /\.vue$/,
