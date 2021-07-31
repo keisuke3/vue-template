@@ -4,7 +4,7 @@
     "browser": true,
     "es6": true
   },
-  "extends": ["plugin:@typescript-eslint/recommended", "plugin:vue/vue3-recommended", "prettier/vue"],
+  "extends": ["plugin:@typescript-eslint/recommended", "plugin:vue/vue3-recommended"],
   "plugins": ["@typescript-eslint", "prettier", "vue"],
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
@@ -40,6 +40,7 @@
 
     // disable the rule for all files
     "@typescript-eslint/no-var-requires": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "vue/singleline-html-element-content-newline": "off"
   }
 }

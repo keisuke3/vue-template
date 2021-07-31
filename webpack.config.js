@@ -2,15 +2,15 @@ const webpack = require('webpack');
 const path = require('path');
 const src = path.resolve(__dirname, './client/src');
 const outputPath = path.resolve(__dirname, './dist');
-const TerserPlugin = require('terser-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
-module.exports = (env, argv) => {
-  const IS_DEVELOPMENT = argv.mode === 'development';
+module.exports = (env) => {
+  const IS_DEVELOPMENT = env.mode === 'development';
 
   return {
-    devtool: IS_DEVELOPMENT ? 'source-map' : 'none',
+    mode: env.mode,
+    devtool: IS_DEVELOPMENT ? 'source-map' : false,
     plugins: [
       new VueLoaderPlugin(),
       new StyleLintPlugin({
@@ -23,6 +23,12 @@ module.exports = (env, argv) => {
     ],
     resolve: {
       extensions: ['.vue', '.js', 'ts', '.css'],
+    },
+    cache: {
+      type: 'filesystem',
+      buildDependencies: {
+        config: [__filename]
+      }
     },
     entry: {
       app: [
@@ -43,17 +49,6 @@ module.exports = (env, argv) => {
       watchOptions: {
         ignored: /node_modules/
       },
-    },
-    optimization: {
-      minimizer: IS_DEVELOPMENT
-        ? []
-        : [
-            new TerserPlugin({
-              terserOptions: {
-                compress: { drop_console: true }
-              }
-            })
-          ]
     },
     module: {
       rules: [
@@ -97,9 +92,11 @@ module.exports = (env, argv) => {
             {
               loader: 'postcss-loader',
               options: {
-                plugins: [
-                  require('autoprefixer'),
-                ]
+                postcssOptions: {
+                  plugins: [
+                    require('autoprefixer'),
+                  ],
+                },
               },
             },
             'sass-loader',
