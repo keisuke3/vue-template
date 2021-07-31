@@ -4,10 +4,14 @@
     "browser": true,
     "es6": true
   },
-  "extends": ["plugin:vue/recommended", "prettier"],
-  "plugins": ["prettier", "vue"],
+  "extends": ["plugin:@typescript-eslint/recommended", "plugin:vue/vue3-recommended"],
+  "plugins": ["@typescript-eslint", "prettier", "vue"],
   "parserOptions": {
-    "ecmaVersion": 2016
+    "parser": "@typescript-eslint/parser",
+    "sourceType": "module",
+    "ecmaVersion": 2020,
+    "extraFileExtensions": [".vue"],
+    "project": "./tsconfig.eslint.json"
   },
   "rules": {
     "semi": "error",
@@ -32,6 +36,11 @@
     "template-curly-spacing": "error",
     "yield-star-spacing": "error",
     "no-console": "warn",
-    "vue/max-attributes-per-line": 0
+    "vue/max-attributes-per-line": 0,
+
+    // disable the rule for all files
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "vue/singleline-html-element-content-newline": "off"
   }
 }
